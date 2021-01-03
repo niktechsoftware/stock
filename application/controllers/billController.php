@@ -251,56 +251,35 @@ function checkCustID(){
 			}
 			
 		}
-/*	function searchData(){
+	function searchData(){
     	   $k= $this->input->post("county");
     	   $kj="-".$k;
-    	   $key =$this->input->post("keyword");
+    	   
     	   $keyword = '%'.$this->input->post("keyword").'%';
-    	$sql = "SELECT distinct(name) ,id  FROM stock_products WHERE hsn = '$keyword' OR name LIKE '$keyword' ORDER BY name ASC LIMIT 0, 10";
+    	$sql = "SELECT distinct(name) ,id  FROM stock_products WHERE hsn LIKE '$keyword' OR name LIKE '$keyword' ORDER BY name ASC LIMIT 0, 10";
     	$query = $this->db->query($sql);
     	if($query->num_rows()>0){
     	foreach ($query->result() as $rs) {
     	echo '<li onclick="set_item(\''.str_replace("'", "\'",$rs->name.$kj).'\')"><a href="#javascript();">'.$rs->name.'['.$rs->id.']'.'</a></li>';
     	}
     	}
-    	}*/
+    	}
     		function getcategory(){
-	    $catArray=array();
-		$name = $this->input->post("text");
-	    $catD= $this->db->query("select cat_id from stock_products where name ='$name' ");
-	    $i=0;foreach($catD->result() as $categoryd):
-	               $catArray[$i]= $categoryd->cat_id;
-	       $i++; endforeach;
-	       
-		$this->db->where_in("id",$catArray);
-		$vt = $this->db->get("product_category");
-	
-		?><option value="">-Select Category-</option>
-		<?php foreach($vt->result() as $v1):?>
-		<option value="<?php echo $v1->id;?>"><?php echo $v1->category;?></option>
-		<?php endforeach;
-		
+    			$pname = $this->input->post("text");
+    			$pcat = $this->input->post("category");
+    			$psubcat = $this->input->post("subcategory");
+    			$pdata= $this->db->query("select * from stock_products where name ='$pname' or hsn='$pname'");
+    			if($pdata->num_rows()>0){
+    				$dataar['size']=$pdata->row()->weight;
+    				$dataar['price']=$pdata->row()->selling_price;
+    				$dataar['quan']=$pdata->row()->quantity;
+    				 
+    				echo json_encode($dataar);
+    			}
+	   
 	}
-    		function getSubCategory(){
-	    $catArray=array();
-		$pname = $this->input->post("name");
-		$pcat = $this->input->post("category");
-		$scatD= $this->db->query("select sub_category from stock_products where name ='$pname' and cat_id='$pcat'");
-	    $i=0;
-	    if($scatD->num_rows()>0){
-	        foreach($scatD->result() as $scategoryd):
-	               $catArray[$i]= $scategoryd->sub_category;
-	       $i++; endforeach;
-	       
-		$this->db->where_in("id",$catArray);
-		$vt1=$this->db->get('sub_category');
-		?><option value="">-Select subcategory-</option>
-		<?php foreach($vt1->result() as $v1):?>
-		<option value="<?php echo $v1->id;?>"><?php echo $v1->name;?></option>
-		<?php endforeach;
-        }
-	}
-		function prodataf(){
+    		
+		/* function prodataf(){
 	  	$pname = $this->input->post("name");
 		$pcat = $this->input->post("category");
 		$psubcat = $this->input->post("subcategory");
@@ -312,7 +291,7 @@ function checkCustID(){
 			    
 			    echo json_encode($dataar);
 			}
-	}
+	} */
 	
 	function rProductBill(){
 	    $data['subPage'] = 'Return Product';

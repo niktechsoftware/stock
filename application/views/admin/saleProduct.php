@@ -76,8 +76,6 @@
 	                           <th>SNO</th>
 	                           <th class="text-center"><label>Item Name</label></th>
 	                         <!--   <th><label>Item Name</label></th> -->
-	                           <th><label>Item Category</label></th>
-	                           <th><label>Sub Category</label></th>
 	                           <th><label>Item Size</label></th>
 	                           <th><label>Price/Item</label></th>
 	                           <th><label>Remaining Item Quantity</label></th>
@@ -107,11 +105,7 @@
 						            <ul style="list-style: none; padding:0px;" id="namep<?php echo $i;?>"></ul>
 						            <?php //} ?>
                             </td>
-                            <td>&nbsp;<select class='form-control' id ="category<?php echo $i;?>" name="category<?php echo $i;?>"> </select>
-						         <!-- <input readonly id="item_cat<?php echo $i; ?>" class="text-uppercase form-control" name="item_cat<?php echo $i; ?>" style="width:70px;">-->
-                            </td>
-                            <td>&nbsp;<select class='form-control' id ="subcategory<?php echo $i;?>" name="subcategory<?php echo $i;?>"> </select></td>
-                             <td>
+                           <td>
                                   <input readonly id="item_size<?php echo $i; ?>" class="text-uppercase form-control" name="item_size<?php echo $i; ?>" style="width:70px;">
                             </td>
                              <td>
@@ -234,7 +228,7 @@
                     									$.ajax({
                     										url: '<?php echo site_url("billController/searchData");?>',
                     										type: 'POST',
-                    										data: { keyword:keyword , county : county },
+                    										data: { keyword	:	keyword , county : county },
                     										success:function(data){
                     										    //alert(data);
                     											$('#namep<?php echo $i;?>').show();
@@ -382,9 +376,11 @@
                                 
                            	$("#item_no"+text2).val(text);  
                            	$.post("<?php echo site_url('billController/getCategory') ?>", {text : text}, function(data){
-                           	    //alert(data);
-								$("#category"+text2).html(data);
-									$('#namep'+text2).hide();
+                           	    alert(data);
+								var d = jQuery.parseJSON(data);	
+									$('#item_quantity1'+text2).val(d.quan);
+       							 $('#item_size'+text2).val(d.size);
+       							 $('#item_price'+text2).val(d.price);
 
 						});
                         						
