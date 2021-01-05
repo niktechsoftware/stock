@@ -18,7 +18,7 @@
 										    $pro=$this->db->get("stock_products");
 										      ?>
 										      <?php $i=1; foreach($pro->result() as $row1):?>
-										    <input type="hidden" value="<?php echo $row1->id;?>" name="id">
+										    <input type="hidden" value="<?php echo $row1->id;?>" name="pid">
                                            <div class="col-xs-6 col-md-6 col-lg-6">
                                             <div class="form-group row">
                                              <div class="col-md-5"><label>Product Name</label></div>
@@ -75,7 +75,7 @@
                 								<div class="col-md-5"><label>Selling Price</label></div>
                 									<div class="col-md-7">
                 								        <div class="form-group">
-                                                    <input type="text" class="form-control" name="selling_price">
+                                                    <input type="text" class="form-control" name="selling_price" value="<?php echo $row1->selling_price;?>">
                 									</div>
                 							     </div>
                 						    </div>
@@ -85,7 +85,7 @@
                                           <div class="col-md-5"><label>Product Quantity</label></div>
                                           <div class="col-md-7">
                                               <div class="form-group">
-                                                   <input type="text" class="form-control" name="quantity" value="<?php echo $row1->quantity;?>">
+                                                   <input type="text" class="form-control" name="quantity" value="<?php echo $row1->quantity;?>" readonly>
                                             </div>
                                            </div>
                                         </div>
@@ -130,7 +130,7 @@
 													</div>
 												</div>
 											</div>  
-										    <?php $i++; endforeach; }?>
+						<?php $i++; endforeach; }?>
                      <div id="setValue"></div>
                      <div class="table-responsive">
                       <table class="table table-striped" id="table-1">

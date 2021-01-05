@@ -9,8 +9,10 @@
                   </div>
                     <div class="card-body">
                      <div id="setValue"></div>
+                     <?php $this->load->view("chaanan/exportjs"); ?>
                      <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
+                          <!--<table class="display nowrap" id="example">-->
+                   <table class="table table-striped" id="table-1">
                      <?php $sub=$this->db->get("stock_products");?>
 
                         <thead>

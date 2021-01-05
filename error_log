@@ -112,3 +112,17 @@
 [22-Dec-2020 07:16:54 UTC] PHP Fatal error:  Call to undefined method stdClass::result() in /home2/niktetxz/public_html/bakery/admin/application/views/admin/rProductBill.php on line 76
 [23-Dec-2020 06:23:08 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home2/niktetxz/public_html/bakery/admin/application/views/admin/addEmployee.php on line 71
 [23-Dec-2020 07:31:49 UTC] PHP Fatal error:  Call to a member function row() on null in /home2/niktetxz/public_html/bakery/admin/application/views/admin/empProfile.php on line 10
+[05-Jan-2021 06:55:49 UTC] PHP Parse error:  syntax error, unexpected '<' in /home2/niktetxz/public_html/amulbakery/application/views/loginPage.php on line 30
+[05-Jan-2021 07:02:28 UTC] PHP Fatal error:  Call to a member function row() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 54
+[05-Jan-2021 07:06:51 UTC] PHP Fatal error:  Call to a member function num_rows() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 51
+[05-Jan-2021 07:07:16 UTC] PHP Fatal error:  Call to a member function row() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 51
+[05-Jan-2021 07:07:38 UTC] PHP Fatal error:  Call to a member function row() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 50
+[05-Jan-2021 07:07:52 UTC] PHP Fatal error:  Call to a member function row() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 50
+[05-Jan-2021 07:07:59 UTC] PHP Fatal error:  Call to a member function row() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 50
+[05-Jan-2021 07:13:09 UTC] PHP Fatal error:  Call to a member function num_rows() on null in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 54
+[05-Jan-2021 07:21:39 UTC] PHP Fatal error:  Call to undefined method stdClass::row() in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 58
+[05-Jan-2021 07:21:53 UTC] PHP Fatal error:  Call to undefined method stdClass::row() in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 58
+[05-Jan-2021 07:22:59 UTC] PHP Fatal error:  Call to undefined method stdClass::row() in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 58
+[05-Jan-2021 07:23:25 UTC] PHP Fatal error:  Call to a member function row() on array in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 57
+[05-Jan-2021 07:24:16 UTC] PHP Fatal error:  Call to undefined method stdClass::row() in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 59
+[05-Jan-2021 09:43:06 UTC] PHP Fatal error:  Call to undefined method stdClass::num_rows() in /home2/niktetxz/public_html/amulbakery/application/views/admin/dayBookReport.php on line 53

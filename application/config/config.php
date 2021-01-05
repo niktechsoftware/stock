@@ -24,7 +24,7 @@
 */
 
 
-$config['base_url'] = 'http://localhost/stock/';
+$config['base_url'] = 'https://niktechsoftware.in/amulbakery/';
 
 
 

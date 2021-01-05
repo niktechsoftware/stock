@@ -287,8 +287,8 @@ class ApanelForms extends CI_Controller{
 	                $id=$this->input->post('pid');
 	                $data=array(
 	                    "product_price"=>$this->input->post("price"),
-	                    'selling_price'=>$this->input->post("selling_price"),
-	                    'quantity'=>$this->input->post("quantity")
+	                    'selling_price'=>$this->input->post("selling_price")
+	                   
 	                     );
 	                     $this->db->where("id",$id);
 	                     $this->db->update("stock_products",$data);
@@ -1228,13 +1228,20 @@ public function deleteCareer(){
 		}
 	}
 	public function deletecategory(){
-		$this->db->where("id",$this->uri->segment(3));
-		if($this->db->delete("product_category")){
-			redirect(base_url()."apanel/category");
+	    $this->db->where("cat_id",$this->uri->segment(3));
+		$sp=$this->db->get("stock_products");
+		if($sp->num_rows()>0){
+		    redirect(base_url()."apanel/category/15");
+		
+		}else{
+		  $this->db->where("id",$this->uri->segment(3));
+		  if($this->db->delete("product_category")){
+		  redirect(base_url()."apanel/category/deleted");
+		  }
 		}
-		else{
-			echo "Somthing going wrong. Please Contact Site administrator";
-		}
+		
+		
+		 
 	}
 	  
 	    public function deletecod(){

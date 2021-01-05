@@ -27,7 +27,7 @@
                           <div class="col-md-5"><label>Company Name or Dealer Name</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                      <input type="text" class="form-control" name="companyName">
+                                      <input type="text" class="form-control" name="companyName" required="required">
                             </div>
                           </div>
                         </div>
@@ -37,7 +37,7 @@
                           <div class="col-md-5"><label>Company Address Or Dealer Address</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                               <input type="text" class="form-control" name="daddress">
+                               <input type="text" class="form-control" name="daddress" required="required">
                             </div>
                              </div>
                         </div>
@@ -52,7 +52,7 @@
                           <div class="col-md-5"><label>Dealer Mobile 1</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                   <input type="text" class="form-control" name="mobile">
+                                   <input type="text" class="form-control" name="mobile" required="required">
                             </div>
                            </div>
                         </div>
@@ -74,7 +74,7 @@
                           <div class="col-md-5"><label>Bill Date (yyyy-mm-dd)</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                   <input type="date" class="form-control" name="billDate">
+                                   <input type="date" class="form-control" name="billDate" required="required">
                             </div>
                            </div>
                         </div>
@@ -85,7 +85,7 @@
                           <div class="col-md-5"><label>Bill Number</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                   <input type="text" class="form-control" id="billNumber" name="billNumber">
+                                   <input type="text" class="form-control" id="billNumber" name="billNumber" required="required">
                             </div>
                            </div>
                         </div>
@@ -133,7 +133,7 @@
                           <div class="col-md-5"><label>Total Product Quantity</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                   <input type="text" class="form-control" id="product_quantity" name="product_quantity">
+                                   <input type="text" class="form-control" id="product_quantity" name="product_quantity" required="required">
                             </div>
                            </div>
                         </div>
@@ -212,7 +212,7 @@
                           <div class="col-md-5"><label>Discount</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                <input type="text" class="form-control" name="discount">
+                                <input type="text" class="form-control" name="discount" id="discount">
                             </div>
                            </div>
                         </div>
@@ -223,7 +223,8 @@
                           <div class="col-md-5"><label>Total Bill Amount</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                <input type="text" class="form-control" id="total_prize"name="total_prize">
+                                <input type="text" class="form-control" id="total_prize" name="total_prize" readonly>
+                                <input type="hidden" value=" " id="total_prize1" name="total_prize1">
                             </div>
                            </div>
                         </div>
@@ -237,7 +238,7 @@
                           <div class="col-md-5"><label>Paid Amount</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                <input type="text" class="form-control" name="amount_paid">
+                                <input type="text" class="form-control" name="amount_paid" id="paid" required="required">
                             </div>
                            </div>
                         </div>
@@ -248,13 +249,31 @@
                           <div class="col-md-5"><label>Balance</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                <input type="text" class="form-control" name="balance">
+                                <input type="text" class="form-control" name="balance" id="balance">
                             </div>
                            </div>
                         </div>
                        </div>
                       </div>
                     </div>
+                    <script>
+                    	jQuery(document).ready(function(){
+                        	$('input#paid').keyup(function(){
+    						var name = $('#paid').val();
+    						var name1 = $('#total_prize').val();
+    						
+    						var a = name1-name ;				
+    						document.getElementById('balance').value=a;
+					});
+						$('input#discount').keyup(function(){
+						var dis = $('#discount').val();
+						var tot1 = $('#total_prize1').val();
+						var a = tot1 - dis;				
+						document.getElementById('total_prize').value=a;
+						
+					});
+                    	});
+                    	</script>
                     <div class="col-md-12 col-lg-12 col-xs-12">
                     <div class="row">
                         <div class="col-xs-6 col-md-6 col-lg-6">

@@ -28,7 +28,7 @@ class Login extends CI_Controller{
 		$data['smallTitle'] = 'Overview of all Section';
 		$data['mainPage'] = 'Dashboard';
 		$data['subPage'] = 'dashboard';
-        $data['title'] = 'Chaanan Dashboard';
+        $data['title'] = 'Bakery Dashboard';
         	$cdate =date("Y-m-d");
 		$backDate = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( $cdate) ) ));
 		$openingBalance=$this->daybook->getClosingBalance($backDate);

@@ -203,10 +203,10 @@ class Home extends CI_Controller{
 						                     </td>
 						                    <td><input type='text' class='form-control' id='pRate<?php echo $i; ?>' name='pRate<?php echo $i; ?>'  width='100%'> </td>
 						                    <td><input type='text' class='form-control'  id='sRate<?php echo $i; ?>' name='sRate<?php echo $i; ?>'  width='100%'></td>
-                                            <td><input type='text' class='form-control'  id ='quan<?php echo $i;?>' name ='quan<?php echo $i;?>' width='100%'/></td>
+                                            <td><input type='text' class='form-control'  id ='quan<?php echo $i;?>' name ='quan<?php echo $i;?>' width='100%' readonly/></td>
 						                    <td><input type='text' class='form-control'  id='extraQuantity<?php echo $i; ?>' name='extraQuantity<?php echo $i; ?>'  width='100%'></td>
 						                    <td><input type='text' class='form-control'  id ='discount<?php echo $i;?>' name ='discount<?php echo $i;?>' width='100%'/></td>
-						                    <td><input type='text' class='form-control'  id ='amount<?php echo $i;?>' name ='sat<?php echo $i;?>' width='100%'/></td>
+						                    <td><input type='text' class='form-control'  id ='amount<?php echo $i;?>' name ='sat<?php echo $i;?>' width='100%' readonly/></td>
 						                    
 						                    <script>
 						                    
@@ -256,16 +256,23 @@ class Home extends CI_Controller{
                                             	    
                                             	});
                                             	});
-                        	
+                        	                        $('input#extraQuantity<?php echo $i; ?>').keyup(
+                                						function(){
+                                							var a = 0;
+                                							var name = $('#pRate<?php echo $i; ?>').val();
+                                							var name1 = Number($('#extraQuantity<?php echo $i; ?>').val());
+                                							var total = name * name1;
+                                							document.getElementById('amount<?php echo $i;?>').value=total;
+                                							$("#submit").show();
+                                						
+                                					});
 						                               
 						                           	$("#discount<?php echo $i;?>").keyup(function(){
         											var st = $("#extraQuantity<?php echo $i;?>").val();
         											var discount=$('#discount<?php echo $i; ?>').val();
         											var sRate=$('#sRate<?php echo $i; ?>').val();
         											var q=$('#quan<?php echo $i; ?>').val();
-        									    	
-        									        /*$("#tquantity<?php echo $i;?>").val(tq);*/
-        											var count=<?php echo $i;?>;
+        									    	var count=<?php echo $i;?>;
         											var pr = $('#pRate<?php echo $i; ?>').val();
         											var totalamount= st*pr - discount;
         									    	var bal = totalamount ;
@@ -286,7 +293,7 @@ class Home extends CI_Controller{
                                         		});
         											//$("#amount<?php echo $i;?>").val(totaly);
         											document.getElementById('total_prize').value = totaly;
-        										
+        											document.getElementById('total_prize1').value = totaly;
         										});
         									</script>     
 						                    </tr>

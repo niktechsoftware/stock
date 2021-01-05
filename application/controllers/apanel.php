@@ -37,6 +37,7 @@
 	    $amount=$this->db->get("cod_amount");
 	    $data['cod']=$amount;
 	     $data['subPage'] = ' Cash On Delivery Amonut';
+	     $data['pageTitle'] = 'Admin Dashboard';
 		$data['smallTitle'] = ' Cash On Delivery Amonut';
 		$data['bigTitle'] = ' Cash On Delivery Amonut';
 		$data['title'] = 'The life Styles | Cash On Delivery Amonut';
@@ -95,7 +96,9 @@ function profile(){
 	}
 	
 	 function category(){
-	   $data['title'] = "Website Category";
+	    $data['pageTitle'] = 'Category';
+	    $data['pageTitle'] = 'Category';
+	    $data['title'] = "Website Category";
 		$data['smallTitle'] = "Website/Category";
 		$data['bigTitle'] = "category";
 		$data['headerCss'] = 'headerCss/customerlistcss';
@@ -105,6 +108,8 @@ function profile(){
 	}
 	
 		function searchCustomer(){
+	
+		$data['pageTitle'] = 'Search Customer';
 	    $data['title'] = " Search Customer";
 		$data['smallTitle'] = "Search Customer";
 		$data['bigTitle'] = "Search Customer";
@@ -113,7 +118,8 @@ function profile(){
 		$data['mainContent'] = "chaanan/Search Customer";
 		$this->load->view("includes/mainContent",$data);
 	}
-		 function subcategory(){
+function subcategory(){
+		$data['pageTitle'] = 'Sub Category';
 	    $data['title'] = " Sub Category";
 		$data['smallTitle'] = "Product Sub Category";
 		$data['bigTitle'] = "Product Sub Category";
@@ -123,6 +129,8 @@ function profile(){
 		$this->load->view("includes/mainContent",$data);
 	}
 	 function product_entry(){
+	     
+	     $data['pageTitle'] = 'Product Entry';
 	    $data['title'] = " Product Entry";
 		$data['smallTitle'] = "Product Entry";
 		$data['bigTitle'] = "Product Entry";
@@ -154,8 +162,9 @@ function profile(){
 	}
 	
 	 function productEntry(){
-	     $data['client_code'] =$this->session->userdata("client_code");
-	     $data['title'] = "Product Entry";
+	   $data['pageTitle'] = 'Product Entry';
+	    $data['client_code'] =$this->session->userdata("client_code");
+	    $data['title'] = "Product Entry";
 		$data['smallTitle'] = "Product Entry";
 		$data['bigTitle'] = "Product Enry";
 		$data['body'] = "admin/productEntry";
@@ -815,6 +824,7 @@ function profile(){
 	}
 	
 	 function billEntry(){
+	     $data['pageTitle'] = 'Bill Entry';
  		$data['title'] = " Bill  Entry";
 		$data['smallTitle'] = "Bill  Entry";
 		$data['bigTitle'] = "Bill Entry";
@@ -947,6 +957,7 @@ function profile(){
 	}
 	
 	 function reglist(){
+	     	$data['pageTitle'] = 'Form List';
 		$data['title'] = "Registration Form List";
 		$data['smallTitle'] = "Registration List";
 		$data['bigTitle'] = "Registration Form List";
@@ -970,6 +981,7 @@ function profile(){
 		$this->load->view("includes/mainContent", $data);
 	}
 	function employeeList(){
+	    $data['pageTitle'] = 'Employee List';
 	    $data['title'] = " Employee List";
 		$data['smallTitle'] = "Employee List";
 		$data['bigTitle'] = "Employee List";
@@ -983,6 +995,7 @@ function profile(){
 		$this->db->where("id",$uri);
 		$emp=$this->db->get('employee');
 		$data['emp']=$emp;
+		$data['pageTitle'] = 'Employee Profile';
 	    $data['title'] = " Employee Profile";
 		$data['smallTitle'] = "Employee Profile";
 		$data['bigTitle'] = "Employee Profile";

@@ -13,14 +13,17 @@
 								<div class="row" id="regForm">
 									<div class="col-md-12 col-lg-12 col-xs-12">
 										<div class="row">
-										    <?php if($this->uri->segment(3)=="success"){?>
-										        <div class="alert alert-success col-md-12 col-lg-12 col-xs-12">Product Category is done successfully entered!</div>
+										    <?php if($this->uri->segment(3)==15){?>
+										        <div class="alert alert-danger col-md-12 col-lg-12 col-xs-12">Firstly delete all products related to this category</div>
 										    <?php }
 										    else{
-										    if($this->uri->segment(4)){?>
-										     <div class="alert alert-warning col-md-12 col-lg-12 col-xs-12"> Please Try Again !</div>
+										    if($this->uri->segment(3)=="success"){?>
+										     <div class="alert alert-success col-md-12 col-lg-12 col-xs-12">Succesfully Added!</div>
 										    
 										   <?php  }}?>
+										    <?php if($this->uri->segment(3)=="deleted"){?>
+										        <div class="alert alert-danger col-md-12 col-lg-12 col-xs-12">Category Deleted!</div>
+										    <?php } ?>
 											
 												<div class="col-xs-6 col-md-6 col-lg-6">
 												<div class="form-group row">

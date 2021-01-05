@@ -74,8 +74,8 @@
 						<thead>
 	                        <tr class="text-uppercase">
 	                           <th>SNO</th>
-	                           <th class="text-center"><label>Item Name</label></th>
-	                         <!--   <th><label>Item Name</label></th> -->
+	                           <th class="text-center"><label>Item Hsn</label></th>
+	                           <th><label>Item Name</label></th>
 	                           <th><label>Item Size</label></th>
 	                           <th><label>Price/Item</label></th>
 	                           <th><label>Remaining Item Quantity</label></th>
@@ -105,6 +105,7 @@
 						            <ul style="list-style: none; padding:0px;" id="namep<?php echo $i;?>"></ul>
 						            <?php //} ?>
                             </td>
+                            <td><input type='text' class='form-control' id='item_name<?php echo $i; ?>'   name='item_name<?php echo $i; ?>'  width='100%' readonly></td>
                            <td>
                                   <input readonly id="item_size<?php echo $i; ?>" class="text-uppercase form-control" name="item_size<?php echo $i; ?>" style="width:70px;">
                             </td>
@@ -143,11 +144,11 @@
                        </tr>
                         <tr>
                             	<td colspan="3"><strong>Discount</strong></td>
-                                <td colspan="5"><input id="dscount" name="dscount" style="width:180px;" class="form-control" value="" type="text" required /></td>
+                                <td colspan="5"><input id="dscount" name="dscount" style="width:180px;" class="form-control" value="0" type="text" required /></td>
                        </tr>
                          <tr>
                             	<td colspan="3"><strong>Payable amount</strong></td>
-                                <td colspan="5"><input id="dsamount" name="dsamount" style="width:180px;" class="form-control" type="text"  required  readonly/></td>
+                                <td colspan="5"><input id="dsamount" name="dsamount" style="width:180px;" class="form-control" type="text" value="0"  required  readonly/></td>
                        </tr>
                        <tr>
                             	<td colspan="3"><strong>Paid</strong></td>
@@ -309,7 +310,7 @@
 						var name = $('#dsamount').val();
 						var name1 = $('#paid').val();
 						
-						var a = name - name1;				
+						var a = name1-name ;				
 						document.getElementById('balance').value=a;
 					});
 				$('input#dscount').keyup(function(){
@@ -376,11 +377,13 @@
                                 
                            	$("#item_no"+text2).val(text);  
                            	$.post("<?php echo site_url('billController/getCategory') ?>", {text : text}, function(data){
-                           	    alert(data);
+                           	    //alert(data);
 								var d = jQuery.parseJSON(data);	
 									$('#item_quantity1'+text2).val(d.quan);
+								$('#item_name'+text2).val(d.name);	
        							 $('#item_size'+text2).val(d.size);
        							 $('#item_price'+text2).val(d.price);
+       							 $('#namep'+text2).hide();
 
 						});
                         						

@@ -75,12 +75,28 @@
                   <div class="card-icon card-icon-large"><i class="fa fa-money-bill-alt"></i></div>
                   <a href="#">
                   <div class="card-content text-white">
-                    <h4 class="card-title">Bill Entry</h4>
+                    <h4 class="card-title">Today's Profit</h4>
                   
                     <div class="row">
                     <div class="col-md-6">
                     <span>
-                  
+                    <?php 
+                    $cdate=date("Y-m-d");
+                    $query=$this->db->query("select distinct (sale_product.item_id) as product from sale_product join sale_info on sale_product.bill_no_id = sale_info.id where DATE(sale_info.date)='$cdate'");
+                   $profitc=0;
+                   foreach($query->result() as $query):
+                       $q1=$this->db->query("select sum(sale_product.item_quantity) as qua from sale_product join sale_info on sale_product.bill_no_id = sale_info.id where DATE(sale_info.date)='$cdate' and sale_product.item_id='$query->product'")->row();
+                       $q2=$this->db->query("select sum(product_price) as pp , sum(selling_price) as sp from stock_products where id='$query->product'")->row();
+                       //echo $q1->price."</br>";
+                       //echo $q1->qua."</br>";
+                       //echo $q2->pp;
+                       $pq=$q2->pp*$q1->qua;
+                       //echo $query->product."-".$q1->price."-".$q1->qua."-".$pq."</br>";
+                       $profitc+=$q2->sp*$q1->qua-$pq;
+                       
+                       endforeach;
+                       echo $profitc;
+                    ?>
                     </span>
                     </div>
                     <div class="col-md-6">
@@ -147,7 +163,7 @@
                   <div class="card-icon card-icon-large"><i class="fa fa-globe"></i></div>
                   <a href="">
                   <div class="card-content text-white">
-                    <h4 class="card-title">Todays Profit </h4>
+                    <h4 class="card-title">Todays Sale </h4>
                     <span>
                     <?php  $pr=$closingBalance-$openingBalance; 
                     echo $pr;
@@ -158,6 +174,48 @@
                         aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                    
+                  </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+             <div class="col-xl-3 col-lg-6">
+              <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3">
+                  <div class="card-icon card-icon-large"><i class="fa fa-money-bill-alt"></i></div>
+                  <a href="#">
+                  <div class="card-content text-white">
+                    <h4 class="card-title">Total Profit</h4>
+                    <div class="row">
+                    <div class="col-md-6">
+                    <span>
+                   <?php $query=$this->db->query("select distinct (item_id) as product from sale_product");
+                   $profit=0;
+                   foreach($query->result() as $query):
+                       $q1=$this->db->query("select sum(item_quantity) as qua from sale_product where item_id='$query->product'")->row();
+                       $q2=$this->db->query("select sum(product_price) as pp , sum(selling_price) as sp from stock_products where id='$query->product'")->row();
+                       //echo $q1->price."</br>";
+                       //echo $q1->qua."</br>";
+                       //echo $q2->pp;
+                       $pq=$q2->pp*$q1->qua;
+                       //echo $query->product."-".$q1->price."-".$q1->qua."-".$pq."</br>";
+                       $profit+=$q2->sp*$q1->qua-$pq;
+                       
+                       endforeach;
+                    ?>
+                    <?php echo $profit; ?>
+                    </span>
+                    </div>
+                    <div class="col-md-6">
+                    <span>
+                   </span>
+                    </div>
+                    </div>
+                    <div class="progress mt-1 mb-1" data-height="8">
+                      <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
                   </div>
                   </a>
                 </div>

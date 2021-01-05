@@ -258,7 +258,7 @@
                           <div class="col-md-5"><label>Product Price</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                   <input type="text" class="form-control" name="price">
+                                   <input type="text" class="form-control" name="price" value="00.0" readonly>
                             </div>
                            </div>
                         </div>
@@ -282,7 +282,7 @@
                           <div class="col-md-5"><label>Product Quantity</label></div>
                           <div class="col-md-7">
                               <div class="form-group">
-                                   <input type="text" class="form-control" name="quantity">
+                                   <input type="text" class="form-control" name="quantity" value="0" readonly>
                             </div>
                            </div>
                         </div>
@@ -306,7 +306,7 @@
 								<div class="col-md-5"><label>Selling Price</label></div>
 									<div class="col-md-7">
 								        <div class="form-group">
-                                    <input type="text" class="form-control" name="selling_price" >
+                                    <input type="text" class="form-control" name="selling_price" value="00.0" readonly>
 									</div>
 							     </div>
 						    </div>

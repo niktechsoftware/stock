@@ -165,13 +165,14 @@ function createSubEx(){
 			   	$last_id= $this->db->insert_id();
     		for($i=1; $i<=15; $i++){
     		    if($this->input->post("item_no".$i)){
-    		        $name=$this->input->post("item_no".$i);
-        		    $cat=$this->input->post("category".$i);
-        		    $subcat=$this->input->post("subcategory".$i);
-        		    $this->db->where('name',$name);
-        		    $this->db->where('cat_id',$cat);
-        		    $this->db->where('sub_category',$subcat);
+    		          $name=$this->input->post("item_no".$i);
+    		        // $cat=$this->input->post("category".$i);
+        		    // $subcat=$this->input->post("subcategory".$i);
+        		    $this->db->where('hsn',$name);
+        		    //$this->db->where('cat_id',$cat);
+        		    //$this->db->where('sub_category',$subcat);
         		    $sp=$this->db->get('stock_products');
+        		    //print_r($sp);
         		    $q1=$this->input->post("item_quantity".$i);
             		    $data1=array(
                 		    "item_id" => $sp->row()->id,
@@ -201,7 +202,7 @@ function createSubEx(){
 				}
 			
          $daybook=array(
-        				"paid_to" => "Classic Bakery",
+        				"paid_to" => "Amul Bakery",
         				"paid_by" =>$cid,
         				"reason"	=> "From sale Stock",
         				"dabit_cradit" => "1",
@@ -256,11 +257,11 @@ function checkCustID(){
     	   $kj="-".$k;
     	   
     	   $keyword = '%'.$this->input->post("keyword").'%';
-    	$sql = "SELECT distinct(name) ,id  FROM stock_products WHERE hsn LIKE '$keyword' OR name LIKE '$keyword' ORDER BY name ASC LIMIT 0, 10";
+    	$sql = "SELECT distinct(name) ,id ,hsn FROM stock_products WHERE hsn LIKE '$keyword' OR name LIKE '$keyword' ORDER BY name ASC LIMIT 0, 10";
     	$query = $this->db->query($sql);
     	if($query->num_rows()>0){
     	foreach ($query->result() as $rs) {
-    	echo '<li onclick="set_item(\''.str_replace("'", "\'",$rs->name.$kj).'\')"><a href="#javascript();">'.$rs->name.'['.$rs->id.']'.'</a></li>';
+    	echo '<li onclick="set_item(\''.str_replace("'", "\'",$rs->hsn.$kj).'\')"><a href="#javascript();">'.$rs->name.'['.$rs->hsn.']'.'</a></li>';
     	}
     	}
     	}
@@ -270,6 +271,7 @@ function checkCustID(){
     			$psubcat = $this->input->post("subcategory");
     			$pdata= $this->db->query("select * from stock_products where name ='$pname' or hsn='$pname'");
     			if($pdata->num_rows()>0){
+    			    $dataar['name']=$pdata->row()->name;
     				$dataar['size']=$pdata->row()->weight;
     				$dataar['price']=$pdata->row()->selling_price;
     				$dataar['quan']=$pdata->row()->quantity;
