@@ -12,7 +12,7 @@
                      <?php $this->load->view("chaanan/exportjs"); ?>
                      <div class="table-responsive">
                           <!--<table class="display nowrap" id="example">-->
-                   <table class="table table-striped" id="table-1">
+                   <table id="example" class="display nowrap" style="width:100%">
                      <?php $sub=$this->db->get("stock_products");?>
 
                         <thead>
@@ -34,7 +34,10 @@
                           </tr>
                             </thead>
                               <tbody>
-                           <?php $i=1; foreach($sub->result() as $row):?>
+                           <?php $i=1;
+                           $sellingprice=0;
+                            $ppprice=0;
+                           foreach($sub->result() as $row):?>
                          <tr>
                              <td><?php echo $i;?></td>
                              <td><?php echo $row->name;?></td>
@@ -44,9 +47,9 @@
                                 $category=$this->db->get('sub_category');
                                 echo $category->row()->name;?></td>
                              <td><?php echo $row->hsn;?></td>
-                             <td><?php echo $row->product_price;?></td>
+                             <td><?php $ppprice+= $row->product_price*$row->quantity; echo $row->product_price;?></td>
                              <td></td>
-                             <td><?php echo $row->selling_price;?></td>
+                             <td><?php $sellingprice+= $row->selling_price*$row->quantity;   echo $row->selling_price;?></td>
                             <td></td>
                              <td><?php echo $row->weight;?></td>
                              <td><?php echo $row->quantity;?></td>
@@ -60,6 +63,23 @@
                             </a></button></td>
                              </tr>
                              <?php $i++; endforeach;?>
+                             <tr>
+                                 <td></td>
+                                 <td>Total</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td><?php echo $ppprice;?></td>
+                                 <td></td>
+                                 <td><?php echo $sellingprice;?></td>
+                                 
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 
+                             </tr>
                        </tbody>
                         
                       </table>

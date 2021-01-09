@@ -379,7 +379,7 @@
                            	$.post("<?php echo site_url('billController/getCategory') ?>", {text : text}, function(data){
                            	    //alert(data);
 								var d = jQuery.parseJSON(data);	
-									$('#item_quantity1'+text2).val(d.quan);
+								$('#item_quantity1'+text2).val(d.quan);
 								$('#item_name'+text2).val(d.name);	
        							 $('#item_size'+text2).val(d.size);
        							 $('#item_price'+text2).val(d.price);

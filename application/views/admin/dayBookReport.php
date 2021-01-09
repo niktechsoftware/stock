@@ -10,9 +10,11 @@
                   <div class="card-body">
                     <input type="hidden" name ="sdate" value="<?php echo $sdate;?>" >
                     <input type="hidden" name ="edate" value="<?php echo $edate;?>" >
-                
+                 <?php $this->load->view("chaanan/exportjs");?>
                     <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
+                    <table id="example" class="display nowrap" style="width:100%">
+                    
+                    <!--  <table class="table table-striped" id="table-1">-->
                      
                         <thead>
                           <tr>
@@ -39,6 +41,7 @@
                            if($gdbd->num_rows()>0){
                                 $i=1;
                                 foreach($gdbd->result() as $gt):  ?>
+                                <tr>
                                 <td><?php echo $i;?></td>      
                                 <td><?php echo $gt->paid_by;?></td> 
                                 <td><?php echo $gt->paid_to;?></td> 
@@ -47,28 +50,33 @@
                                 <td style="color: green"><?php if($gt->dabit_cradit == 1 || $gt->dabit_cradit == 2){ $credit = $credit + $gt->amount; echo $gt->amount; } ?></td>
                                 <td><a href="<?php echo base_url();?>index.php/billController/invoice/<?php echo $gt->invoice_no;?>"><?php echo $gt->invoice_no;?></a></td> 
                                 <td><?php echo $gt->pay_date;?></td>  
-                                <?php   $itemQuan=0;
+                                <?php  $amount1=0;  if($gt->dabit_cradit == 1){ $itemQuan=0;
                                         $this->db->where("bill_no",$gt->invoice_no);
                                         $sinfo=$this->db->get("sale_info");
                                         if($sinfo->num_rows()>0){
                                         $this->db->where('bill_no_id',$sinfo->row()->id);
                                         $sproduct=$this->db->get('sale_product');
-                                     $amount1=0;
+                                    
                                      foreach($sproduct->result() as $sproduct):
                                      $this->db->where('id',$sproduct->item_id);
                                     $sp=$this->db->get('stock_products');?>
                                 <?php $itemQuan+= $sproduct->item_quantity;?>
                                 <?php if($sp->num_rows() >0){
                                 $amount1 += $sp->row()->selling_price*$sproduct->item_quantity - $sp->row()->product_price*$sproduct->item_quantity;
-                                $profit = $profit + $amount1;
-                               // echo $amount1;  
+                               
+                               // echo $amount1.'<br>';  
                                } ?>
                                  <?php endforeach;  }?>
                                  <td><?php echo $itemQuan;?></td>
                                  <td><?php echo $amount1;?></td>
+                                 <?php }else{?>
+                                 <td></td>
+                                 <td></td>
+                                 <?php }?>
                                  </tr>
-                          </tbody>  
-                          <?php $i++; endforeach; }?>
+                          
+                          <?php $i++;  $profit = $profit + $amount1; endforeach; }?>
+                           </tbody> 
                         <tfoot>
 							<tr>
 								<td>----</td>

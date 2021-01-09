@@ -219,7 +219,7 @@ function dayBookReport(){
           "paid_to" =>"Classic Bakery",
            "paid_by"=>$this->input->post('empId'),
            "pay_date" =>$this->input->post('pdate'),
-           "status" => 0,
+           "status" => 1,
            "dabit_cradit"=>0,
            "pay_mode" => "Cash",
            "reason" => $this->input->post('reason'),

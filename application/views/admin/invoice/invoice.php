@@ -158,7 +158,7 @@ td, th {
 		    <td calss="form-control" style="border: none;"><img src="http://niktechsoftware.in/bakery/assets/images/logo-1.png" style="width:90px; height:80px; margin-left:100px;"></td>
 				<td calss="form-control" width="90%" style="border: none;">
 				    <h2 calss="form-control" align="center" style="font-variant:small-caps; margin-right:150px; font-size:40px; color:;">
-					<?php echo "Classic Bakery";
+					<?php echo "Hamara Amul";
 					?>
                     </h2>
 			        <h3 calss="form-control" align="center" style="font-variant:small-caps; margin-right:150px;color:; font-size:25px; ">

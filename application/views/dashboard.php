@@ -55,10 +55,18 @@
                   <div class="card-icon card-icon-large"><i class="fa fa-globe"></i></div>
                   <a href="">
                   <div class="card-content text-white">
-                    <h4 class="card-title"> Products </h4>
+                    <h4 class="card-title"> Stock Details [Today]</h4>
                     <span>
-                    
-                    </span>
+                    <?php $sub=$this->db->get("stock_products");
+                    $i=1;
+                           $sellingprice=0;
+                            $ppprice=0;
+                           foreach($sub->result() as $row):
+                              $ppprice+= $row->product_price*$row->quantity; 
+                              $sellingprice+= $row->selling_price*$row->quantity;
+                              
+                              endforeach;?>
+                    </span>PP=<?php echo $ppprice;?> &nbsp;&nbsp; &nbsp;    SP=<?php echo $sellingprice;?>
                     <div class="progress mt-1 mb-1" data-height="8">
                       <div class="progress-bar 0-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25"
                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -166,7 +174,7 @@
                     <h4 class="card-title">Todays Sale </h4>
                     <span>
                     <?php  $pr=$closingBalance-$openingBalance; 
-                    echo $pr;
+                   echo $total['creditTotal'];
                     ?>
                     </span>
                     <div class="progress mt-1 mb-1" data-height="8">
